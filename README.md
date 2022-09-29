@@ -5,5 +5,5 @@ Supports fabric 1.19+, forge support is coming soon!\
 The fabric api is required.
 
 ## Links
-Curseforge: TBA<br>
+Curseforge: https://www.curseforge.com/minecraft/mc-mods/weather-changer <br>
 Modrinth: TBA

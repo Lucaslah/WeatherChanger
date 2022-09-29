@@ -9,8 +9,10 @@
     "Lucaslah"
   ],
   "contact": {
-    "homepage": "https://cssudii.xyz/r/project/weather-changer",
-    "sources": "https://github.com/Lucalah/weather-changer"
+    "homepage": "https://cssudii.xyz/r/project/oss/weather-changer",
+    "sources": "https://github.com/Lucaslah/WeatherChanger",
+    "issues": "https://github.com/Lucaslah/WeatherChanger/issues",
+    "email": "ossprojects@cssudii.xyz"
   },
 
   "license": "lgpl-3",
