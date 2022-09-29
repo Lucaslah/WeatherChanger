@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "weather-changer",
+  "version": "${version}",
+
+  "name": "Weather Changer",
+  "description": "Client side weather changer",
+  "authors": [
+    "Lucaslah"
+  ],
+  "contact": {
+    "homepage": "https://cssudii.xyz/r/project/weather-changer",
+    "sources": "https://github.com/Lucalah/weather-changer"
+  },
+
+  "license": "lgpl-3",
+  "icon": "assets/weatherchanger/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.lucaslah.weatherchanger.WeatherChanger"
+    ]
+  },
+  "mixins": [
+    "mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  }
+}
