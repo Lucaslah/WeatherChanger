@@ -2,9 +2,9 @@ package me.lucaslah.weatherchanger.mixin;
 
 import me.lucaslah.weatherchanger.WeatherChanger;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.profiler.Profiler;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.MutableWorldProperties;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
