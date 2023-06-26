@@ -1,48 +1,52 @@
 package me.lucaslah.weatherchanger.mixin;
 
 import me.lucaslah.weatherchanger.WeatherChanger;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.profiler.Profiler;
-import net.minecraft.world.MutableWorldProperties;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.function.Supplier;
-
-@Mixin(ClientWorld.class)
-public abstract class WorldMixin extends World {
-    protected WorldMixin(MutableWorldProperties properties, RegistryKey<World> registryRef, RegistryEntry<DimensionType> dimension, Supplier<Profiler> profiler, boolean isClient, boolean debugWorld, long seed, int maxChainedNeighborUpdates) {
-        super(properties, registryRef, dimension, profiler, isClient, debugWorld, seed, maxChainedNeighborUpdates);
-    }
+@Mixin(World.class)
+public class WorldMixin {
 
     private WeatherChanger mod = WeatherChanger.getInstance();
 
-    @Override
-    public float getRainGradient(float delta) {
-        if (mod.mode == WeatherChanger.Mode.OFF) {
-            return super.getRainGradient(delta);
-        } else if (mod.mode == WeatherChanger.Mode.CLEAR) {
-            return 0;
+    @Shadow
+    protected float rainGradientPrev;
+    @Shadow
+    protected float rainGradient;
+
+    @Inject(method = "getRainGradient", at = @At("HEAD"), cancellable = true)
+    public void changeRainGradient(float delta, CallbackInfoReturnable<Float> callback) {
+        if (mod.mode == WeatherChanger.Mode.CLEAR) {
+            callback.setReturnValue(0F);
         } else if (mod.mode == WeatherChanger.Mode.RAIN || mod.mode == WeatherChanger.Mode.THUNDER) {
-            return 1;
+            callback.setReturnValue(1F);
+        } else {
+            callback.setReturnValue(MathHelper.lerp(delta, this.rainGradientPrev, this.rainGradient));
         }
 
-        return super.getRainGradient(delta);
+        callback.cancel();
     }
 
-    @Override
-    public float getThunderGradient(float delta) {
-        if (mod.mode == WeatherChanger.Mode.OFF) {
-            return super.getRainGradient(delta);
-        } else if (mod.mode == WeatherChanger.Mode.CLEAR) {
-            return 0;
+    @Inject(method = "getThunderGradient", at = @At("HEAD"), cancellable = true)
+    public void getThunderGradient(float delta, CallbackInfoReturnable<Float> callback) {
+        if (mod.mode == WeatherChanger.Mode.CLEAR) {
+            callback.setReturnValue(0F);
         } else if (mod.mode == WeatherChanger.Mode.THUNDER) {
-            return 1;
+            callback.setReturnValue(1F);
+        } else {
+            callback.setReturnValue(this.getRainGradient(delta));
         }
 
-        return super.getRainGradient(delta);
+        callback.cancel();
     }
+
+    public float getRainGradient(float delta) {
+        return MathHelper.lerp(delta, this.rainGradientPrev, this.rainGradient);
+    }
+
 }
