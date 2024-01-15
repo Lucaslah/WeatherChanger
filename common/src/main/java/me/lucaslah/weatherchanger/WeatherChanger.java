@@ -20,8 +20,10 @@ import java.util.Objects;
 public class WeatherChanger {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static WcMode currentMode = WcMode.OFF;
+    private static WeatherChangerPlatform platform;
 
-    public static void init() {
+    public static void init(WeatherChangerPlatform platform) {
+        WeatherChanger.platform = platform;
         boolean fileCreated = false;
         File configPath = getConfigFile();
 
@@ -39,7 +41,7 @@ public class WeatherChanger {
             loadConfig();
         }
 
-        KeybindingManager keybindingManager = WeatherChangerExpectPlatform.getKeybindingManager();
+        KeybindingManager keybindingManager = platform.getKeybindingManager();
 
         keybindingManager
                 .add(new ToggleClearKey())
@@ -96,7 +98,7 @@ public class WeatherChanger {
     }
 
     private static File getConfigFile() {
-        return WeatherChangerExpectPlatform.getConfigDirectory().resolve("weather-changer.json").toFile();
+        return platform.getConfigDirectory().resolve("weather-changer.json").toFile();
     }
 
     /**

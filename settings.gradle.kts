@@ -24,3 +24,4 @@ pluginManagement {
 
 include("common")
 include("fabric")
+include("forge")

@@ -4,6 +4,7 @@ plugins {
 }
 
 architectury {
+    injectInjectables = false
     minecraft = properties["minecraft_version"].toString()
 }
 
