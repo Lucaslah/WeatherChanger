@@ -1,7 +1,6 @@
 import io.github.themrmilchmann.gradle.publish.curseforge.ChangelogFormat
 import io.github.themrmilchmann.gradle.publish.curseforge.GameVersion
 import io.github.themrmilchmann.gradle.publish.curseforge.ReleaseType
-import net.fabricmc.loom.task.RemapJarTask
 
 plugins {
     id("architectury-plugin") version "3.4-SNAPSHOT"
