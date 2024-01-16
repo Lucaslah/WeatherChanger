@@ -22,10 +22,6 @@ subprojects {
         "minecraft"("com.mojang:minecraft:${properties["minecraft_version"]}")
         "mappings"("net.fabricmc:yarn:${rootProject.properties["yarn_mappings"]}:v2")
     }
-
-    tasks.named("remapJar", RemapJarTask::class) {
-        archiveBaseName.set(properties["archives_base_name"].toString() + archiveBaseName)
-    }
 }
 
 allprojects {

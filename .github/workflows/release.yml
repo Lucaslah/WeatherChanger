@@ -26,8 +26,8 @@ jobs:
         with:
           name: build
           path: |
-            fabric/build/**/*.jar
-            forge/build/**/*.jar
+            fabric/build/libs/*.jar
+            forge/build/libs/*.jar
 
   release:
     runs-on: ubuntu-latest

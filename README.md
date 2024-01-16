@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <p align="center" style="display: block;margin-left: auto;margin-right: auto;margin-bottom: 0">
     <img src="assets/logo-242x242.png" alt="Weather Changer Logo"/>
 </p>
