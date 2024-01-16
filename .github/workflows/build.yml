@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CI_DEV_BUILD: true
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -15,6 +17,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Setup build number
+        run: echo "BUILD_NUMBER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Make gradlew executable
         run: chmod +x ./gradlew
       - name: Build with Gradle
@@ -24,5 +28,7 @@ jobs:
       - name: Upload Build Results
         uses: actions/upload-artifact@v3
         with:
-          name: build
-          path: build/libs/*.jar
+          name: weather-changer-build
+          path: |
+            fabric/build/**/*.jar
+            forge/build/**/*.jar

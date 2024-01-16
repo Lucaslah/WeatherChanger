@@ -41,6 +41,8 @@ tasks {
                 "fabric_loader_version" to rootProject.property("fabric.loader_version")
             ))
         }
+
+        exclude("architectury.common.json")
     }
 
     remapJar {

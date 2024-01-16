@@ -48,6 +48,8 @@ tasks {
                 "minecraft_version" to rootProject.property("minecraft_version")
             ))
         }
+
+        exclude("architectury.common.json")
     }
 
     remapJar {

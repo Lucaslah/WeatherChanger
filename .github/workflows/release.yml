@@ -25,7 +25,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build
-          path: build/libs/*.jar
+          path: |
+            fabric/build/**/*.jar
+            forge/build/**/*.jar
 
   release:
     runs-on: ubuntu-latest
@@ -40,7 +42,7 @@ jobs:
       - name: Create Release
         run: |
           mkdir dist
-          mv build/*.jar dist
+          mv build/**/*.jar dist
           
           pushd dist
           shasum -a 256 * > checksums.txt

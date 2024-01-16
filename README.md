@@ -23,7 +23,7 @@ Changes the weather on client side (only visible to you) to clear, rain, or thun
 The command alias `/cweather` may also be used as a shortcut.
 
 ### Keybindings
-To set the keybindings you can do so in the minecraft keyBase bind settings.
+To set the keybindings you can do so in the minecraft keybinding settings.
 
 | Description                                                                      | Default |
 |----------------------------------------------------------------------------------|---------|
