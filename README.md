@@ -13,10 +13,10 @@
     <img src="assets/banner.png"  alt="Weather Changer Banner"/>
 </p>
 
-> Warning: This is the v1.0 (next) branch and is still in development.
-
 ## Overview
 Changes the weather on client side (only visible to you) to clear, rain, or thunder, this mod does not affect the server or send any packets to the server.
+
+Supports forge and fabric, requires the [Fabric API](https://modrinth.com/mod/P7dR8mSH) when using fabric
 
 ### In-Game Command Usage
 `/clientweather <off | clear | rain | thunder>`
@@ -48,8 +48,9 @@ You can download the mod from any of the platforms below.
 <!-- modrinth_exclude.end -->
 
 ## Release History
-| Branch | Version | MC Version    | Mod loaders | Git Tag                                                                | CI  | Supported |
-|--------|---------|---------------|-------------|------------------------------------------------------------------------|-----|-----------|
+| Branch | Version | MC Version    | Mod loaders   | Git Tag                                                                | CI                                                                                                                                                                                   | Supported |
+|--------|---------|---------------|---------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| main   | v1.0.0  | 1.20.1-1.20.4 | fabric, forge | [1.0.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.0) | [![Build](https://github.com/Lucaslah/WeatherChanger/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/Lucaslah/WeatherChanger/actions/workflows/release.yml) | Yes       |
 
 ### Pre-release (v0) versions
 | Branch | Version | MC Version    | Mod loaders | Git Tag                                                                | CI  | Supported |
