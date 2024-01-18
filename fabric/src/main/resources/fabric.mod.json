@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "WeatherChanger",
+  "description": "Client side weather change for Minecraft",
+  "authors": [
+    "Lucaslah"
+  ],
+  "contact": {
+    "sources": "https://github.com/Lucaslah/WeatherChanger",
+    "homepage": "https://lucaslah.github.com/WeatherChanger",
+    "issues": "https://github.com/Lucaslah/WeatherChanger/issues"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/weatherchanger/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.lucaslah.weatherchanger.fabric.WeatherChangerFabric"
+    ]
+  },
+  "mixins": [
+    "weatherchanger.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric": "*",
+    "minecraft": ">=${minecraft_base_version}"
+  }
+}
