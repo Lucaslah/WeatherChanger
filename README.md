@@ -35,6 +35,8 @@ To set the keybindings you can do so in the minecraft keybinding settings.
 
 For supported mod loaders and minecraft versions see [release history](#release-history)
 
+<!-- modrinth_exclude.start -->
+
 ## Download
 You can download the mod from any of the platforms below.
 
@@ -42,6 +44,8 @@ You can download the mod from any of the platforms below.
 **Curseforge**: https://www.curseforge.com/minecraft/mc-mods/weather-changer <br>
 **GitHub Releases:** https://github.com/Lucaslah/WeatherChanger/releases <br>
 **Release Server**: https://release.cssudii.xyz/projects/weatherchanger
+
+<!-- modrinth_exclude.end -->
 
 ## Release History
 | Branch | Version | MC Version    | Mod loaders | Git Tag                                                                | CI  | Supported |
@@ -57,6 +61,7 @@ You can download the mod from any of the platforms below.
 ## Minecraft Versions
 | Version | Status                          |
 |---------|---------------------------------|
+| 1.20.4  | Supported                       |
 | 1.20.3  | Supported                       |
 | 1.20.2  | Supported                       |
 | 1.20.1  | Supported                       |

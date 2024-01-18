@@ -4,7 +4,7 @@ import io.github.themrmilchmann.gradle.publish.curseforge.ReleaseType
 
 plugins {
     id("architectury-plugin") version "3.4-SNAPSHOT"
-    id ("dev.architectury.loom") version "1.3-SNAPSHOT" apply false
+    id ("dev.architectury.loom") version "1.4-SNAPSHOT" apply false
     id("com.modrinth.minotaur") version "2.+"
     id("io.github.themrmilchmann.curseforge-publish") version "0.6.1"
 }
@@ -65,6 +65,7 @@ modrinth {
 }
 
 curseforge {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
     publications {
         register("curseForge") {
             projectId = "682513"

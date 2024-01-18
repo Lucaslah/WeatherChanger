@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class KeybindingManager {
+public class KeybindingManager {
     private final HashMap<Identifier, Key> entries = new HashMap<>();
 
     public KeybindingManager add(Key entry) {
@@ -25,6 +25,4 @@ public abstract class KeybindingManager {
 
         return new ArrayList<>();
     }
-
-    public abstract void registerKeys();
 }

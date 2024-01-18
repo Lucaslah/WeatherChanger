@@ -2,6 +2,8 @@ package me.lucaslah.weatherchanger;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.lucaslah.weatherchanger.command.CommandManager;
+import me.lucaslah.weatherchanger.commands.WeatherChangerCommand;
 import me.lucaslah.weatherchanger.config.WcConfig;
 import me.lucaslah.weatherchanger.config.WcMode;
 import me.lucaslah.weatherchanger.keybinding.KeybindingManager;
@@ -9,6 +11,8 @@ import me.lucaslah.weatherchanger.keys.ToggleClearKey;
 import me.lucaslah.weatherchanger.keys.ToggleOffKey;
 import me.lucaslah.weatherchanger.keys.ToggleRainKey;
 import me.lucaslah.weatherchanger.keys.ToggleThunderKey;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +25,8 @@ public class WeatherChanger {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static WcMode currentMode = WcMode.OFF;
     private static WeatherChangerPlatform platform;
+    private static KeybindingManager keybindingManager;
+    private static CommandManager commandManager;
 
     public static void init(WeatherChangerPlatform platform) {
         WeatherChanger.platform = platform;
@@ -41,7 +47,8 @@ public class WeatherChanger {
             loadConfig();
         }
 
-        KeybindingManager keybindingManager = platform.getKeybindingManager();
+        keybindingManager = new KeybindingManager();
+        commandManager = new CommandManager();
 
         keybindingManager
                 .add(new ToggleClearKey())
@@ -49,7 +56,7 @@ public class WeatherChanger {
                 .add(new ToggleRainKey())
                 .add(new ToggleThunderKey());
 
-        keybindingManager.registerKeys();
+        commandManager.add(new WeatherChangerCommand());
     }
 
     private static void loadConfig() {
@@ -131,5 +138,17 @@ public class WeatherChanger {
      */
     public static void shutdown() {
         writeConfig();
+    }
+
+    public static KeybindingManager getKeybindingManager() {
+        return keybindingManager;
+    }
+
+    public static CommandManager getCommandManager() {
+        return commandManager;
+    }
+
+    public static void sendClientMessage(String message) {
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(message));
     }
 }
