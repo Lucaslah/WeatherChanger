@@ -42,7 +42,8 @@ jobs:
       - name: Create Release
         run: |
           mkdir dist
-          mv build/**/*.jar dist
+          mv build/fabric/build/libs/*.jar dist
+          mv build/forge/build/libs/*.jar dist
           
           pushd dist
           shasum -a 256 * > checksums.txt
