@@ -1,0 +1,26 @@
+# Build download location
+tmp/
+
+/.cache
+/build/
+/scripts/
+*.log
+
+# Jetbrains IDE
+.idea
+
+# Visual Studio Code
+.vscode
+
+# Yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Parcel
+.parcel-cache
+dist/

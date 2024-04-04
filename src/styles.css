@@ -1,0 +1,78 @@
+html {
+    background: linear-gradient(135deg, #5568b7, #203177);
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.link {
+    color: aquamarine;
+}
+
+.title {
+    font-size: xxx-large;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bolder;
+    color: aliceblue;
+}
+
+.tagline {
+    color: aliceblue;
+    margin-top: 0;
+    font-size: large;
+}
+
+.rounded-image {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.button {
+    display: inline-block;
+    background-color: #5c6ebb;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    border: 1px solid #5363a8;
+}
+
+.button:hover {
+    background-color: #485fc5;
+}
+
+.button:active {
+    background-color: #2E7D32;
+}
+
+.button-with-logo {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.github-link:hover {
+    background-color: #1c2024;
+}
+
+.github-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
