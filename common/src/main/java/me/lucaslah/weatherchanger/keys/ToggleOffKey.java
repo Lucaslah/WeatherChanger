@@ -20,7 +20,7 @@ public class ToggleOffKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.OFF);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Off"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.off"), true);
     }
 
     @Override

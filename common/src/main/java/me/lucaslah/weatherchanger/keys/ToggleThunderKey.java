@@ -20,7 +20,7 @@ public class ToggleThunderKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.THUNDER);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Thunder"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.thunder"), true);
     }
 
     @Override

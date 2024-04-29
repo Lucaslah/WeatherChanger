@@ -20,7 +20,7 @@ public class ToggleClearKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.CLEAR);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Clear"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.clear"), true);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class ToggleRainKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.RAIN);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Rain"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.rain"), true);
     }
 
     @Override
