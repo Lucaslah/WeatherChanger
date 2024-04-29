@@ -7,6 +7,8 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import me.lucaslah.weatherchanger.WeatherChanger;
 import me.lucaslah.weatherchanger.command.Command;
 import me.lucaslah.weatherchanger.config.WcMode;
+import net.minecraft.client.resource.language.I18n;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import static me.lucaslah.weatherchanger.WeatherChanger.sendClientMessage;
@@ -19,7 +21,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("off")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.OFF);
-                    sendClientMessage("Set client weather to: Off");
+                    sendClientMessage(Text.translatable("commands.weatherchanger.set.off"));
                     return 1;
                 })
         );
@@ -27,7 +29,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("clear")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.CLEAR);
-                    sendClientMessage("Set client weather to: Clear");
+                    sendClientMessage(Text.translatable("commands.weatherchanger.set.clear"));
                     return 1;
                 })
         );
@@ -35,7 +37,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("rain")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.RAIN);
-                    sendClientMessage("Set client weather to: Rain");
+                    sendClientMessage(Text.translatable("commands.weatherchanger.set.rain"));
                     return 1;
                 })
         );
@@ -43,7 +45,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("thunder")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.THUNDER);
-                    sendClientMessage("Set client weather to: Thunder");
+                    sendClientMessage(Text.translatable("commands.weatherchanger.set.thunder"));
                     return 1;
                 })
         );

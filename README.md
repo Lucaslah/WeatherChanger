@@ -62,6 +62,7 @@ You can download the mod from any of the platforms below.
 ## Minecraft Versions
 | Version | Status                          |
 |---------|---------------------------------|
+| 1.20.5  | Supported                       |
 | 1.20.4  | Supported                       |
 | 1.20.3  | Supported                       |
 | 1.20.2  | Supported                       |
