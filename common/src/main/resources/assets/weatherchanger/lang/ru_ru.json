@@ -1,0 +1,11 @@
+{
+  "modmenu.descriptionTranslation.weatherchanger": "Позволяет изменять погоду в клиенте, не изменяя погоду сервера.",
+  "commands.weatherchanger.set.off": "Установлена клиентская погода: Выкл.",
+  "commands.weatherchanger.set.clear": "Установлена клиентская погода: Ясная",
+  "commands.weatherchanger.set.rain": "Установлена клиентская погода: Дождливая",
+  "commands.weatherchanger.set.thunder": "Установлена клиентская погода: Гроза и дождь",
+  "keys.weatherchanger.off.name": "Выключить клиентскую погоду",
+  "keys.weatherchanger.clear.name": "Переключить ясную погоду",
+  "keys.weatherchanger.rain.name": "Переключить дождливую погоду",
+  "keys.weatherchanger.thunder.name": "Переключить дождливую и грозовую погоду"
+}
