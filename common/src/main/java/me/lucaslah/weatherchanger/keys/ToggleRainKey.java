@@ -5,6 +5,7 @@ import me.lucaslah.weatherchanger.config.WcMode;
 import me.lucaslah.weatherchanger.keybinding.Key;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -19,7 +20,7 @@ public class ToggleRainKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.RAIN);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Rain"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.rain"), true);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ToggleRainKey extends Key {
 
     @Override
     public String getDisplayName() {
-        return "Toggle Weather Rain";
+        return I18n.translate("keys.weatherchanger.rain.name");
     }
 
     @Override

@@ -1,0 +1,12 @@
+{
+  "modmenu.summaryTranslation.weatherchanger": "Клиент тарафыннан Minecraft һава торышын үзгәртү",
+  "modmenu.descriptionTranslation.weatherchanger": "Сервер тарафыннан һава торышын үзгәртмичә, клиент тарафыннан Minecraft һава торышын үзгәртү",
+  "commands.weatherchanger.set.off": "Клиентлы һава торышы урнаштырылды: Сүнек",
+  "commands.weatherchanger.set.clear": "Клиентлы һава торышы урнаштырылды: Аяз",
+  "commands.weatherchanger.set.rain": "Клиентлы һава торышы урнаштырылды: Яңгырлы",
+  "commands.weatherchanger.set.thunder": "Клиентлы һава торышы урнаштырылды: Яшенле һәм яңгырлы",
+  "keys.weatherchanger.off.name": "Клиентлы һава торышын сүндерү",
+  "keys.weatherchanger.clear.name": "Аяз һава торышын күчерү",
+  "keys.weatherchanger.rain.name": "Яңгырлы һава торышын күчерү",
+  "keys.weatherchanger.thunder.name": "Яшенле һәм яңгырлы һава торышын күчерү"
+}

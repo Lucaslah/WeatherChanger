@@ -1,0 +1,10 @@
+{
+  "commands.weatherchanger.set.off": "Set client weather to: Off",
+  "commands.weatherchanger.set.clear": "Set client weather to: Clear",
+  "commands.weatherchanger.set.rain": "Set client weather to: Rain",
+  "commands.weatherchanger.set.thunder": "Set client weather to: Thunder",
+  "keys.weatherchanger.off.name": "Toggle Weather Off",
+  "keys.weatherchanger.clear.name": "Toggle Weather Clear",
+  "keys.weatherchanger.rain.name": "Toggle Weather Rain",
+  "keys.weatherchanger.thunder.name": "Toggle Weather Thunder"
+}

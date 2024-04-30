@@ -5,6 +5,7 @@ import me.lucaslah.weatherchanger.config.WcMode;
 import me.lucaslah.weatherchanger.keybinding.Key;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -19,7 +20,7 @@ public class ToggleOffKey extends Key {
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.OFF);
         assert mc.player != null;
-        mc.player.sendMessage(Text.of("Set client weather to: Off"), true);
+        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.off"), true);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ToggleOffKey extends Key {
 
     @Override
     public String getDisplayName() {
-        return "Toggle Weather Off";
+        return I18n.translate("keys.weatherchanger.off.name");
     }
 
     @Override

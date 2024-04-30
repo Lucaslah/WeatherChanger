@@ -148,7 +148,7 @@ public class WeatherChanger {
         return commandManager;
     }
 
-    public static void sendClientMessage(String message) {
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(message));
+    public static void sendClientMessage(Text message) {
+        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(message);
     }
 }
