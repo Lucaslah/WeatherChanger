@@ -1,10 +1,12 @@
 import io.github.themrmilchmann.gradle.publish.curseforge.ChangelogFormat
 import io.github.themrmilchmann.gradle.publish.curseforge.GameVersion
 import io.github.themrmilchmann.gradle.publish.curseforge.ReleaseType
+import net.fabricmc.loom.task.RemapJarTask
+import net.fabricmc.loom.task.RemapSourcesJarTask
 
 plugins {
-    id("architectury-plugin") version "3.4-SNAPSHOT"
-    id ("dev.architectury.loom") version "1.4-SNAPSHOT" apply false
+    id("architectury-plugin") version "3.4.+"
+    id ("dev.architectury.loom") version "1.5.+" apply false
     id("com.modrinth.minotaur") version "2.+"
     id("io.github.themrmilchmann.curseforge-publish") version "0.6.1"
 }
@@ -15,18 +17,35 @@ architectury {
 }
 
 subprojects {
+    apply(plugin = "java")
+    apply(plugin = "architectury-plugin")
     apply(plugin = "dev.architectury.loom")
 
     dependencies {
         "minecraft"("com.mojang:minecraft:${properties["minecraft_version"]}")
         "mappings"("net.fabricmc:yarn:${rootProject.properties["yarn_mappings"]}:v2")
     }
+
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
+        options.release.set(17)
+    }
+
+    tasks.withType<Jar> {
+        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
+    }
+
+    tasks.withType<RemapJarTask> {
+        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
+    }
+
+    tasks.withType<RemapSourcesJarTask> {
+        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
+    }
 }
 
 allprojects {
-    apply(plugin = "java")
     apply(plugin = "maven-publish")
-    apply(plugin = "architectury-plugin")
 
     version = if (System.getenv("CI_DEV_BUILD")?.toBoolean() == true) {
         System.getenv("BUILD_NUMBER") ?: properties["mod_version"].toString()
@@ -35,15 +54,6 @@ allprojects {
     }
 
     group = properties["maven_group"].toString()
-
-    tasks.withType<JavaCompile> {
-        options.encoding = "UTF-8"
-        options.release.set(17)
-    }
-
-    tasks.withType<Jar> {
-        archiveBaseName.set(properties["archives_base_name"].toString())
-    }
 }
 
 modrinth {
