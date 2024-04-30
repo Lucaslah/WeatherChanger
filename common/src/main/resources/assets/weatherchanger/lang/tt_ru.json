@@ -1,5 +1,6 @@
 {
-  "modmenu.descriptionTranslation.weatherchanger": "Клиент тарафыннан Minecraft һава торышын үзгәртү",
+  "modmenu.summaryTranslation.weatherchanger": "Клиент тарафыннан Minecraft һава торышын үзгәртү",
+  "modmenu.descriptionTranslation.weatherchanger": "Сервер тарафыннан һава торышын үзгәртмичә, клиент тарафыннан Minecraft һава торышын үзгәртү",
   "commands.weatherchanger.set.off": "Клиентлы һава торышы урнаштырылды: Сүнек",
   "commands.weatherchanger.set.clear": "Клиентлы һава торышы урнаштырылды: Аяз",
   "commands.weatherchanger.set.rain": "Клиентлы һава торышы урнаштырылды: Яңгырлы",
