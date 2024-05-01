@@ -48,20 +48,22 @@ You can download the mod from any of the platforms below.
 <!-- modrinth_exclude.end -->
 
 ## Release History
-| Branch | Version | MC Version    | Mod loaders   | Git Tag                                                                | CI                                                                                                                                                                                   | Supported |
-|--------|---------|---------------|---------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| main   | v1.0.0  | 1.20.1-1.20.4 | fabric, forge | [1.0.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.0) | [![Build](https://github.com/Lucaslah/WeatherChanger/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/Lucaslah/WeatherChanger/actions/workflows/release.yml) | Yes       |
+| Version | MC Version    | Mod loaders   | Git Tag                                                                | Supported |
+|---------|---------------|---------------|------------------------------------------------------------------------|-----------|
+| v1.0.1  | 1.20.1-1.20.6 | fabric, forge | [1.0.1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.1) | Yes       |
+| v1.0.0  | 1.20.1-1.20.4 | fabric, forge | [1.0.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.0) | No        |
 
 ### Pre-release (v0) versions
-| Branch | Version | MC Version    | Mod loaders | Git Tag                                                                | CI  | Supported |
-|--------|---------|---------------|-------------|------------------------------------------------------------------------|-----|-----------|
-| N/A    | v0.3.0  | 1.20.1-1.20.4 | fabric      | [0.3.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.3.0) | N/A | No        |
-| N/A    | v0.2.0  | 1.19.3        | fabric      | [0.2.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.2.0) | N/A | No        |
-| N/A    | v0.1.0  | 1.19.1-1.19.2 | fabric      | [0.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.1.0) | N/A | No        |
+| Version | MC Version    | Mod loaders | Git Tag                                                                | Supported |
+|---------|---------------|-------------|------------------------------------------------------------------------|-----------|
+| v0.3.0  | 1.20.1-1.20.4 | fabric      | [0.3.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.3.0) | No        |
+| v0.2.0  | 1.19.3        | fabric      | [0.2.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.2.0) | No        |
+| v0.1.0  | 1.19.1-1.19.2 | fabric      | [0.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.1.0) | No        |
 
 ## Minecraft Versions
 | Version | Status                          |
 |---------|---------------------------------|
+| 1.20.6  | Supported                       |
 | 1.20.5  | Supported                       |
 | 1.20.4  | Supported                       |
 | 1.20.3  | Supported                       |
