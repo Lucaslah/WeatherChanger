@@ -50,7 +50,7 @@ public class Timer {
         if (currentMode == WcMode.RAIN) {
             if (chance < 0.05) { // 5% chance to worsen from rain to thunderstorm
                 WeatherChanger.setMode(WcMode.THUNDER);
-            } else if (chance < 0.20) { // 10% chance to clear up from rain
+            } else if (chance < 0.20) { // 15% chance to clear up from rain
                 WeatherChanger.setMode(WcMode.CLEAR);
             }
         } else if (currentMode == WcMode.THUNDER) {
