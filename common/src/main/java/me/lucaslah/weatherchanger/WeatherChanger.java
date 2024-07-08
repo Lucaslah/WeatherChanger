@@ -11,6 +11,7 @@ import me.lucaslah.weatherchanger.keys.ToggleClearKey;
 import me.lucaslah.weatherchanger.keys.ToggleOffKey;
 import me.lucaslah.weatherchanger.keys.ToggleRainKey;
 import me.lucaslah.weatherchanger.keys.ToggleThunderKey;
+import me.lucaslah.weatherchanger.timerlogic.Timer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
@@ -27,6 +28,8 @@ public class WeatherChanger {
     private static WeatherChangerPlatform platform;
     private static KeybindingManager keybindingManager;
     private static CommandManager commandManager;
+    private static Timer weatherTimer;
+    private static boolean timerEnabled = false; // Default to false
 
     public static void init(WeatherChangerPlatform platform) {
         WeatherChanger.platform = platform;
@@ -57,6 +60,8 @@ public class WeatherChanger {
                 .add(new ToggleThunderKey());
 
         commandManager.add(new WeatherChangerCommand());
+
+        weatherTimer = new Timer();
     }
 
     private static void loadConfig() {
@@ -150,5 +155,13 @@ public class WeatherChanger {
 
     public static void sendClientMessage(Text message) {
         MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(message);
+    }
+
+    public static void toggleTimer() {
+        timerEnabled = !timerEnabled;
+    }
+
+    public static boolean isTimerEnabled() {
+        return timerEnabled;
     }
 }

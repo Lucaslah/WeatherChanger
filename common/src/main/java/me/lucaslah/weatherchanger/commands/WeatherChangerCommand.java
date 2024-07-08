@@ -48,6 +48,15 @@ public class WeatherChangerCommand extends Command {
                 })
         );
 
+        command.then(LiteralArgumentBuilder.<T>literal("toggleTimer")
+                .executes(context -> {
+                    WeatherChanger.toggleTimer();
+                    String message = WeatherChanger.isTimerEnabled() ? "Timer enabled." : "Timer disabled.";
+                    sendClientMessage(Text.literal(message));
+                    return 1;
+                })
+        );
+
         LiteralCommandNode<T> node = dispatcher.register(command);
         dispatcher.register(LiteralArgumentBuilder.<T>literal("cweather").redirect(node));
     }
