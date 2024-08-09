@@ -47,7 +47,6 @@ You can download the mod from any of the platforms below.
 **Modrinth (_recommended_)**: https://modrinth.com/mod/weather-changer <br>
 **Curseforge**: https://www.curseforge.com/minecraft/mc-mods/weather-changer <br>
 **GitHub Releases:** https://github.com/Lucaslah/WeatherChanger/releases <br>
-**Release Server**: https://release.cssudii.xyz/projects/weatherchanger
 
 <!-- modrinth_exclude.end -->
 
