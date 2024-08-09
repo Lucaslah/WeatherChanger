@@ -54,7 +54,7 @@ public class WeatherChangerCommand extends Command {
 
     @Override
     public Identifier getId() {
-        return new Identifier("weatherchanger", "corecommand");
+        return Identifier.of("weatherchanger", "corecommand");
     }
 
     @Override

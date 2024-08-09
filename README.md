@@ -1,3 +1,5 @@
+<!-- modrinth_exclude.start -->
+
 <!--suppress HtmlDeprecatedAttribute -->
 <p align="center" style="display: block;margin-left: auto;margin-right: auto;margin-bottom: 0">
     <img src="assets/logo-242x242.png" alt="Weather Changer Logo"/>
@@ -12,6 +14,8 @@
 <p align="center" style="display: block;margin: 0 auto;">
     <img src="assets/banner.png"  alt="Weather Changer Banner"/>
 </p>
+
+<!-- modrinth_exclude.end -->
 
 ## Overview
 Changes the weather on client side (only visible to you) to clear, rain, or thunder, this mod does not affect the server or send any packets to the server.
@@ -43,13 +47,13 @@ You can download the mod from any of the platforms below.
 **Modrinth (_recommended_)**: https://modrinth.com/mod/weather-changer <br>
 **Curseforge**: https://www.curseforge.com/minecraft/mc-mods/weather-changer <br>
 **GitHub Releases:** https://github.com/Lucaslah/WeatherChanger/releases <br>
-**Release Server**: https://release.cssudii.xyz/projects/weatherchanger
 
 <!-- modrinth_exclude.end -->
 
 ## Release History
 | Version | MC Version    | Mod loaders   | Git Tag                                                                | Supported |
 |---------|---------------|---------------|------------------------------------------------------------------------|-----------|
+| v1.1.0  | 1.21          | fabric        | [1.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.1.0) | Yes       |
 | v1.0.1  | 1.20.1-1.20.6 | fabric, forge | [1.0.1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.1) | Yes       |
 | v1.0.0  | 1.20.1-1.20.4 | fabric, forge | [1.0.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.0) | No        |
 
@@ -63,6 +67,7 @@ You can download the mod from any of the platforms below.
 ## Minecraft Versions
 | Version | Status                          |
 |---------|---------------------------------|
+| 1.21    | Supported                       |
 | 1.20.6  | Supported                       |
 | 1.20.5  | Supported                       |
 | 1.20.4  | Supported                       |

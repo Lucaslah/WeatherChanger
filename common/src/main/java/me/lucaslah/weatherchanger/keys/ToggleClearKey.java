@@ -25,7 +25,7 @@ public class ToggleClearKey extends Key {
 
     @Override
     public Identifier getId() {
-        return new Identifier("weatherchanger", "toggleclearkey");
+        return Identifier.of("weatherchanger", "toggleclearkey");
     }
 
     @Override
