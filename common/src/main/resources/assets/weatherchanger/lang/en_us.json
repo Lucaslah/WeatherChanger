@@ -3,6 +3,8 @@
   "commands.weatherchanger.set.clear": "Set client weather to: Clear",
   "commands.weatherchanger.set.rain": "Set client weather to: Rain",
   "commands.weatherchanger.set.thunder": "Set client weather to: Thunder",
+  "commands.weatherchanger.timer.on": "Timer enabled",
+  "commands.weatherchanger.timer.off": "Timer disabled",
   "keys.weatherchanger.off.name": "Toggle Weather Off",
   "keys.weatherchanger.clear.name": "Toggle Weather Clear",
   "keys.weatherchanger.rain.name": "Toggle Weather Rain",

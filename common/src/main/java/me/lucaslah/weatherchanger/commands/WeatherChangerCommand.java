@@ -51,8 +51,8 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("toggleTimer")
                 .executes(context -> {
                     WeatherChanger.toggleTimer();
-                    String message = WeatherChanger.isTimerEnabled() ? "Timer enabled." : "Timer disabled.";
-                    sendClientMessage(Text.literal(message));
+                    Text message = WeatherChanger.isTimerEnabled() ? Text.translatable("commands.weatherchanger.timer.on") : Text.translatable("commands.weatherchanger.timer.off");
+                    sendClientMessage(message);
                     return 1;
                 })
         );
