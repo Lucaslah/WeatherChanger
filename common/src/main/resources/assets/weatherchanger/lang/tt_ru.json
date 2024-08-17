@@ -5,6 +5,8 @@
   "commands.weatherchanger.set.clear": "Клиентлы һава торышы урнаштырылды: Аяз",
   "commands.weatherchanger.set.rain": "Клиентлы һава торышы урнаштырылды: Яңгырлы",
   "commands.weatherchanger.set.thunder": "Клиентлы һава торышы урнаштырылды: Яшенле һәм яңгырлы",
+  "commands.weatherchanger.timer.on": "Таймер кушык",
+  "commands.weatherchanger.timer.off": "Таймер сүнек",
   "keys.weatherchanger.off.name": "Клиентлы һава торышын сүндерү",
   "keys.weatherchanger.clear.name": "Аяз һава торышын күчерү",
   "keys.weatherchanger.rain.name": "Яңгырлы һава торышын күчерү",
