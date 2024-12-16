@@ -3,7 +3,7 @@ import net.fabricmc.loom.task.RemapSourcesJarTask
 
 plugins {
     id("architectury-plugin") version "3.4.+"
-    id ("dev.architectury.loom") version "1.6.+" apply false
+    id ("dev.architectury.loom") version "1.7.+" apply false
 }
 
 architectury {
