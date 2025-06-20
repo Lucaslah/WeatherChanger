@@ -53,6 +53,7 @@ You can download the mod from any of the platforms below.
 ## Release History
 | Version | MC Version    | Mod loaders   | Git Tag                                                                | Supported |
 |---------|---------------|---------------|------------------------------------------------------------------------|-----------|
+| v1.2.2  | 1.21          | fabric, forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2) | Yes       |
 | v1.2.1  | 1.21          | fabric, forge | [1.2.1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.1) | Yes       |
 | v1.2.0  | 1.21          | fabric        | [1.2.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.0) | No        |
 | v1.1.0  | 1.21          | fabric        | [1.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.1.0) | No        |
