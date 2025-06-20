@@ -62,6 +62,8 @@ tasks {
             rename { "icon.png" }
         }
 
+        rename("common-common-refmap.json", "weatherchanger-common-common-refmap.json")
+
         dependsOn(":common:transformProductionForge")
 
         from({

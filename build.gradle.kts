@@ -3,11 +3,10 @@ import net.fabricmc.loom.task.RemapSourcesJarTask
 
 plugins {
     id("architectury-plugin") version "3.4.+"
-    id ("dev.architectury.loom") version "1.7.+" apply false
+    id("dev.architectury.loom") version "1.7.+" apply false
 }
 
 architectury {
-    injectInjectables = false
     minecraft = properties["minecraft_version"].toString()
 }
 
@@ -23,7 +22,7 @@ subprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
 
     tasks.withType<Jar> {

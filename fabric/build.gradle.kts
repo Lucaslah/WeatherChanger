@@ -55,6 +55,8 @@ tasks {
             rename { "assets/weatherchanger/icon.png" }
         }
 
+        rename("common-common-refmap.json", "weatherchanger-common-common-refmap.json")
+
         dependsOn(":common:transformProductionFabric")
 
         from({
