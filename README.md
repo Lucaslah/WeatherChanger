@@ -28,62 +28,37 @@ Supports forge and fabric, requires the [Fabric API](https://modrinth.com/mod/P7
 The command alias `/cweather` may also be used as a shortcut.
 
 ### Keybindings
-To set the keybindings you can do so in the minecraft keybinding settings.
+If you would like to set the keybindings, you can do so in the minecraft keybinding settings.
 
 | Description                                                                      | Default |
 |----------------------------------------------------------------------------------|---------|
 | Disable the client weather (weather will display the server weather like normal) | Unbound |
 | Set the client weather mod to clear                                              | Unbound |
 | Set the client weather mod to rain                                               | Unbound |   
-| Set the client weather mod to thunder                                            | Unbound |   
-
-For supported mod loaders and minecraft versions see [release history](#release-history)
+| Set the client weather mod to thunder                                            | Unbound |
 
 <!-- modrinth_exclude.start -->
 
 ## Download
 You can download the mod from any of the platforms below.
 
-**Modrinth (_recommended_)**: https://modrinth.com/mod/weather-changer <br>
 **Curseforge**: https://www.curseforge.com/minecraft/mc-mods/weather-changer <br>
+**Modrinth**: https://modrinth.com/mod/weather-changer <br>
 **GitHub Releases:** https://github.com/Lucaslah/WeatherChanger/releases <br>
 
 <!-- modrinth_exclude.end -->
 
-## Release History
-| Version | MC Version    | Mod loaders   | Git Tag                                                                | Supported |
-|---------|---------------|---------------|------------------------------------------------------------------------|-----------|
-| v1.2.2  | 1.21          | fabric, forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2) | Yes       |
-| v1.2.1  | 1.21          | fabric, forge | [1.2.1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.1) | Yes       |
-| v1.2.0  | 1.21          | fabric        | [1.2.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.0) | No        |
-| v1.1.0  | 1.21          | fabric        | [1.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.1.0) | No        |
-| v1.0.1  | 1.20.1-1.20.6 | fabric, forge | [1.0.1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.1) | Yes       |
-| v1.0.0  | 1.20.1-1.20.4 | fabric, forge | [1.0.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.0.0) | No        |
+## Supported Versions
 
-### Pre-release (v0) versions
-| Version | MC Version    | Mod loaders | Git Tag                                                                | Supported |
-|---------|---------------|-------------|------------------------------------------------------------------------|-----------|
-| v0.3.0  | 1.20.1-1.20.4 | fabric      | [0.3.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.3.0) | No        |
-| v0.2.0  | 1.19.3        | fabric      | [0.2.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.2.0) | No        |
-| v0.1.0  | 1.19.1-1.19.2 | fabric      | [0.1.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/0.1.0) | No        |
+Supported versions may receive bug fixes,
+older Minecraft versions may work with older
+Weather Changer versions, but are not supported.
 
-## Minecraft Versions
-| Version | Status                          |
-|---------|---------------------------------|
-| 1.21    | Supported                       |
-| 1.20.6  | Supported                       |
-| 1.20.5  | Supported                       |
-| 1.20.4  | Supported                       |
-| 1.20.3  | Supported                       |
-| 1.20.2  | Supported                       |
-| 1.20.1  | Supported                       |
-| 1.20    | Not Supported (available in v0) |
-| 1.19.4  | Not Supported (available in v0) |
-| 1.19.3  | Not Supported (available in v0) |
-| 1.19.2  | Not Supported (available in v0) |
-| 1.19.1  | Not Supported (available in v0) |
+See the [GitHub releases](https://github.com/Lucaslah/WeatherChanger/releases) page for full release history.
 
-*Older versions may be added on request*
+| Weather Changer Version | Minecraft Version | Mod loaders   | Latest Release                                                         |
+|-------------------------|-------------------|---------------|------------------------------------------------------------------------|
+| v1.2.x                  | 1.21-1.21.10      | Fabric, Forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2) |
 
 ------------------------------------------
 *Licensed under the [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) license.*
