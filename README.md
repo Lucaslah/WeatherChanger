@@ -28,7 +28,7 @@ Supports forge and fabric, requires the [Fabric API](https://modrinth.com/mod/P7
 The command alias `/cweather` may also be used as a shortcut.
 
 ### Keybindings
-To set the keybindings, you can do so in the minecraft keybinding settings.
+If you would like to set the keybindings, you can do so in the minecraft keybinding settings.
 
 | Description                                                                      | Default |
 |----------------------------------------------------------------------------------|---------|
