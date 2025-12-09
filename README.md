@@ -58,7 +58,6 @@ See the [GitHub releases](https://github.com/Lucaslah/WeatherChanger/releases) p
 
 | Weather Changer Version | Minecraft Version | Mod loaders   | Latest Release                                                         |
 |-------------------------|-------------------|---------------|------------------------------------------------------------------------|
-| v1.3.x                  | 1.21.11           | Fabric, Forge | [1.3.0](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.3.0) |
 | v1.2.x                  | 1.21.0-1.21.10    | Fabric, Forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2) |
 
 ------------------------------------------
