@@ -12,10 +12,6 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class ToggleClearKey extends Key {
-    public ToggleClearKey() {
-        super("ToggleClearKey");
-    }
-
     @Override
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.CLEAR);
@@ -46,11 +42,6 @@ public class ToggleClearKey extends Key {
     @Override
     public InputUtil.Type getKeyType() {
         return InputUtil.Type.KEYSYM;
-    }
-
-    @Override
-    public String getCategory() {
-        return "Weather Changer";
     }
 
     @Override

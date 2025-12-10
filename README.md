@@ -56,9 +56,10 @@ Weather Changer versions, but are not supported.
 
 See the [GitHub releases](https://github.com/Lucaslah/WeatherChanger/releases) page for full release history.
 
-| Weather Changer Version | Minecraft Version | Mod loaders   | Latest Release                                                         |
-|-------------------------|-------------------|---------------|------------------------------------------------------------------------|
-| v1.2.x                  | 1.21-1.21.10      | Fabric, Forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2) |
+| Weather Changer Version | Minecraft Version | Mod loaders   | Latest Release                                                                     |
+|-------------------------|-------------------|---------------|------------------------------------------------------------------------------------|
+| v1.3.x                  | 1.21.11           | Fabric, Forge | [1.3.0-beta1](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.3.0-beta1) |
+| v1.2.x                  | 1.21-1.21.10      | Fabric, Forge | [1.2.2](https://github.com/Lucaslah/WeatherChanger/releases/tag/1.2.2)             |
 
 ------------------------------------------
 *Licensed under the [GNU Lesser General Public License v3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) license.*

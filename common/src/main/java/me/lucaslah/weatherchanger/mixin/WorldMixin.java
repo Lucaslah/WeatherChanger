@@ -20,11 +20,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(World.class)
 public class WorldMixin {
     @Shadow
-    protected float rainGradientPrev;
+    protected float lastRainGradient;
     @Shadow
     protected float rainGradient;
     @Shadow
-    protected float thunderGradientPrev;
+    protected float lastThunderGradient;
     @Shadow
     protected float thunderGradient;
 
@@ -32,12 +32,12 @@ public class WorldMixin {
 
     @Unique
     private float weatherChanger$getRainGradientOg(float delta) {
-        return MathHelper.lerp(delta, this.rainGradientPrev, this.rainGradient);
+        return MathHelper.lerp(delta, this.lastRainGradient, this.rainGradient);
     }
 
     @Unique
     private float weatherChanger$getThunderGradientOg(float delta) {
-        return MathHelper.lerp(delta, this.thunderGradientPrev, this.thunderGradient) * this.weatherChanger$getRainGradientOg(delta);
+        return MathHelper.lerp(delta, this.lastThunderGradient, this.thunderGradient) * this.weatherChanger$getRainGradientOg(delta);
     }
 
     @Unique
@@ -54,7 +54,7 @@ public class WorldMixin {
         } else if (mode == WcMode.RAIN || mode == WcMode.THUNDER) {
             callback.setReturnValue(1F);
         } else {
-            callback.setReturnValue(MathHelper.lerp(delta, this.rainGradientPrev, this.rainGradient));
+            callback.setReturnValue(MathHelper.lerp(delta, this.lastRainGradient, this.rainGradient));
         }
 
         callback.cancel();
@@ -69,7 +69,7 @@ public class WorldMixin {
         } else if (mode == WcMode.THUNDER) {
             callback.setReturnValue(1F);
         } else {
-            callback.setReturnValue(MathHelper.lerp(delta, this.thunderGradientPrev, this.thunderGradient) * MathHelper.lerp(delta, this.rainGradientPrev, this.rainGradient));
+            callback.setReturnValue(MathHelper.lerp(delta, this.lastThunderGradient, this.thunderGradient) * MathHelper.lerp(delta, this.lastRainGradient, this.rainGradient));
         }
 
         callback.cancel();
@@ -83,7 +83,6 @@ public class WorldMixin {
 
     @Inject(method = "isThundering", at = @At("HEAD"), cancellable = true)
     public void isThundering(CallbackInfoReturnable<Boolean> callback) {
-
         if (this.weatherChanger$getDimension().hasSkyLight() && !(this.weatherChanger$getDimension().hasCeiling())) {
             callback.setReturnValue((double)this.weatherChanger$getThunderGradientOg(1.0F) > 0.9);
         } else {

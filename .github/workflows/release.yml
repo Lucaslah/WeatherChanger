@@ -59,4 +59,8 @@ jobs:
             --generate-notes
           )
           
+          if [[ "$channel" == "alpha" || "$channel" == "beta" ]]; then
+            release_args+=( --prerelease )
+          fi
+          
           gh release create "${release_args[@]}" ./dist/*

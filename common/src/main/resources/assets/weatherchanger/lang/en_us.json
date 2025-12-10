@@ -1,4 +1,5 @@
 {
+  "key.category.minecraft.weatherchanger": "Weather Changer",
   "commands.weatherchanger.set.off": "Set client weather to: Off",
   "commands.weatherchanger.set.clear": "Set client weather to: Clear",
   "commands.weatherchanger.set.rain": "Set client weather to: Rain",
