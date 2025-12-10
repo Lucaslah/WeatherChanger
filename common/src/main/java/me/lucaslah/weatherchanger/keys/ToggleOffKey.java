@@ -12,10 +12,6 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class ToggleOffKey extends Key {
-    public ToggleOffKey() {
-        super("ToggleOffKey");
-    }
-
     @Override
     public void onPress(@NotNull MinecraftClient client) {
         WeatherChanger.setMode(WcMode.OFF);
@@ -46,11 +42,6 @@ public class ToggleOffKey extends Key {
     @Override
     public InputUtil.Type getKeyType() {
         return InputUtil.Type.KEYSYM;
-    }
-
-    @Override
-    public String getCategory() {
-        return "Weather Changer";
     }
 
     @Override
