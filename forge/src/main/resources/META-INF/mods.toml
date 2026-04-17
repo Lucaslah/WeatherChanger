@@ -1,7 +1,8 @@
 modLoader = "javafml"
-loaderVersion = "[4,)"
+loaderVersion = "[${loader_version},)"
 issueTrackerURL = "https://github.com/Lucaslah/WeatherChanger/issues"
 license = "LGPL-3.0"
+clientSideOnly = true
 
 [[mods]]
 modId = "${mod_id}"
@@ -12,11 +13,13 @@ description = '''
 Client side weather change for Minecraft
 '''
 logoFile = "icon.png"
+displayTest = "IGNORE_SERVER_VERSION"
+features = {java_version = "[25,)"}
 
 [[dependencies.${mod_id}]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[${loader_version},)"
 ordering = "NONE"
 side = "CLIENT"
 

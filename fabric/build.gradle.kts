@@ -1,52 +1,52 @@
-architectury {
-    platformSetupLoomIde()
-    fabric()
+plugins {
+    id("net.fabricmc.fabric-loom") version "1.15.5"
+}
+
+base {
+    archivesName.set("${rootProject.property("archives_base_name")}-fabric")
+}
+
+sourceSets {
+    named("main") {
+        java.srcDir("../common/src/main/java")
+        resources.srcDir("../common/src/main/resources")
+    }
 }
 
 loom {
-    accessWidenerPath = project(":common").loom.accessWidenerPath
-}
+    accessWidenerPath = file("../common/src/main/resources/weatherchanger.accesswidener")
 
-val common: Configuration by configurations.creating
-val shadowCommon: Configuration by configurations.creating
-
-configurations {
-    compileOnly.configure { extendsFrom(common) }
-    runtimeOnly.configure { extendsFrom(common) }
+    mods {
+        create(rootProject.property("mod_id").toString()) {
+            sourceSet(sourceSets.main.get())
+        }
+    }
 }
 
 dependencies {
-    modImplementation("net.fabricmc:fabric-loader:${rootProject.property("fabric.loader_version")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric.version")}")
+    minecraft("com.mojang:minecraft:${rootProject.property("minecraft_version")}")
 
-    common(project(":common", "namedElements")) {
-        isTransitive = false
-    }
-
-    shadowCommon(project(":common", "transformProductionFabric")){
-        isTransitive = false
-    }
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("net.fabricmc:fabric-loader:${rootProject.property("fabric.loader_version")}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric.version")}")
+    implementation("net.fabricmc.fabric-api:fabric-key-mapping-api-v1:2.0.4+e2bdee7847")
 }
 
 tasks {
     processResources {
-        inputs.property("version", project.version)
+        val properties = mapOf(
+            "version" to project.version,
+            "mod_id" to rootProject.property("mod_id"),
+            "minecraft_version" to rootProject.property("minecraft_version"),
+            "fabric_loader_version" to rootProject.property("fabric.loader_version"),
+            "java_version" to rootProject.property("java_version")
+        )
+
+        inputs.properties(properties)
 
         filesMatching("fabric.mod.json") {
-            expand(mapOf(
-                "version" to project.version,
-                "mod_id" to rootProject.property("mod_id"),
-                "minecraft_version" to rootProject.property("minecraft_version"),
-                "minecraft_base_version" to rootProject.property("minecraft_base"),
-                "fabric_loader_version" to rootProject.property("fabric.loader_version")
-            ))
+            expand(properties)
         }
-
-        exclude("architectury.common.json")
-    }
-
-    remapJar {
-        injectAccessWidener.set(true)
     }
 
     jar {
@@ -54,14 +54,6 @@ tasks {
         from("../assets/logo.png") {
             rename { "assets/weatherchanger/icon.png" }
         }
-
-        rename("common-common-refmap.json", "weatherchanger-common-common-refmap.json")
-
-        dependsOn(":common:transformProductionFabric")
-
-        from({
-            shadowCommon.filter { it.name.endsWith("jar") }.map { zipTree(it) }
-        })
     }
 }
 

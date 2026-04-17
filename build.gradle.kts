@@ -1,40 +1,19 @@
-import net.fabricmc.loom.task.RemapJarTask
-import net.fabricmc.loom.task.RemapSourcesJarTask
-
 plugins {
-    id("architectury-plugin") version "3.4.+"
-    id("dev.architectury.loom") version "1.13.+" apply false
+    base
 }
 
-architectury {
-    minecraft = properties["minecraft_version"].toString()
-}
+val javaVersion = providers.gradleProperty("java_version").get().toInt()
 
 subprojects {
     apply(plugin = "java")
-    apply(plugin = "architectury-plugin")
-    apply(plugin = "dev.architectury.loom")
 
-    dependencies {
-        "minecraft"("com.mojang:minecraft:${properties["minecraft_version"]}")
-        "mappings"("net.fabricmc:yarn:${rootProject.properties["yarn_mappings"]}:v2")
+    extensions.configure<org.gradle.api.plugins.JavaPluginExtension> {
+        toolchain.languageVersion.set(org.gradle.jvm.toolchain.JavaLanguageVersion.of(javaVersion))
     }
 
-    tasks.withType<JavaCompile> {
+    tasks.withType<JavaCompile>().configureEach {
         options.encoding = "UTF-8"
-        options.release.set(21)
-    }
-
-    tasks.withType<Jar> {
-        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
-    }
-
-    tasks.withType<RemapJarTask> {
-        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
-    }
-
-    tasks.withType<RemapSourcesJarTask> {
-        archiveBaseName.set(properties["archives_base_name"].toString() + "-${project.name}")
+        options.release.set(javaVersion)
     }
 }
 
@@ -48,4 +27,8 @@ allprojects {
     }
 
     group = properties["maven_group"].toString()
+}
+
+tasks.named("build") {
+    dependsOn(":fabric:build", ":forge:build")
 }

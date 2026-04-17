@@ -11,5 +11,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "refmap": "weatherchanger-common-common-refmap.json"
+  "refmap": "weatherchanger.refmap.json"
 }

@@ -13,12 +13,38 @@ pluginManagement {
         }
 
         maven {
-            name = "Architectury"
-            url = uri("https://maven.architectury.dev/")
+            name = "Sponge"
+            url = uri("https://repo.spongepowered.org/repository/maven-public/")
         }
 
         mavenCentral()
         gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+
+        maven {
+            name = "Fabric"
+            url = uri("https://maven.fabricmc.net/")
+        }
+
+        maven {
+            name = "Forge"
+            url = uri("https://maven.minecraftforge.net/")
+        }
+
+        maven {
+            name = "Sponge"
+            url = uri("https://repo.spongepowered.org/repository/maven-public/")
+        }
+
+        maven {
+            name = "Mojang"
+            url = uri("https://libraries.minecraft.net/")
+        }
     }
 }
 
@@ -36,6 +62,5 @@ gradleEnterprise {
     }
 }
 
-include("common")
 include("fabric")
-//include("forge")
+include("forge")
