@@ -1,21 +1,19 @@
 package me.lucaslah.weatherchanger.command;
 
-import net.minecraft.util.Identifier;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class CommandManager {
-    private final HashMap<Identifier, Command> entries = new HashMap<>();
+    private final HashMap<String, Command> entries = new HashMap<>();
 
     public CommandManager add(Command entry) {
         entries.put(entry.getId(), entry);
         return this;
     }
 
-    public Command get(Identifier identifier) {
-        return entries.get(identifier);
+    public Command get(String id) {
+        return entries.get(id);
     }
 
     public List<Command> getEntries() {

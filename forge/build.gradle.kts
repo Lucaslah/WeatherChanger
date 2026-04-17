@@ -1,93 +1,115 @@
-architectury {
-    platformSetupLoomIde()
-    forge()
+plugins {
+    java
+    id("net.minecraftforge.gradle") version "[7.0.17,8)"
 }
 
-loom {
-    accessWidenerPath.set(project(":common").loom.accessWidenerPath)
+val mixinConfig = "weatherchanger.mixins.json"
+val mixinRefMap = layout.buildDirectory.file("tmp/mixin/compileJava/weatherchanger.refmap.json").get().asFile
+val forgeVersion = rootProject.property("forge.version").toString()
+val minecraftExtension = extensions.getByName("minecraft") as groovy.lang.GroovyObject
+val forgeDependency = minecraftExtension.invokeMethod("dependency", "net.minecraftforge:forge:$forgeVersion")
 
-    forge.apply {
-        convertAccessWideners.set(true)
-        extraAccessWideners.add(loom.accessWidenerPath.get().asFile.name)
+base {
+    archivesName.set("${rootProject.property("archives_base_name")}-forge")
+}
 
-        mixinConfig("weatherchanger.mixins.json")
+sourceSets {
+    named("main") {
+        java.srcDir("../common/src/main/java")
+        resources.srcDir("../common/src/main/resources")
     }
 }
 
-val common: Configuration by configurations.creating
-val shadowCommon: Configuration by configurations.creating
+extensions.configure<Any>("minecraft") {
+    withGroovyBuilder {
+        "runs" {
+            "configureEach" {
+                setProperty("workingDir", layout.projectDirectory.dir("run").asFile)
+                "systemProperty"("eventbus.api.strictRuntimeChecks", "true")
+                "args"("--mixin.config", mixinConfig)
+            }
 
-configurations {
-    compileOnly.configure { extendsFrom(common) }
-    runtimeOnly.configure { extendsFrom(common) }
+            "register"("client")
+            "register"("server") {
+                "args"("--nogui")
+            }
+        }
+    }
+}
+
+repositories {
+    minecraftExtension.invokeMethod("mavenizer", this)
+    mavenCentral()
+    maven("https://repo.spongepowered.org/repository/maven-public/")
 }
 
 dependencies {
-    forge("net.minecraftforge:forge:${rootProject.property("forge.version")}")
+    add("implementation", forgeDependency)
+    implementation("com.google.code.gson:gson:2.10.1")
+    add("annotationProcessor", "org.spongepowered:mixin:${rootProject.property("mixin_version")}:processor")
+}
 
-    common(project(":common", "namedElements")) {
-        isTransitive = false
-    }
+tasks.named<org.gradle.api.tasks.compile.JavaCompile>("compileJava") {
+    doFirst {
+        mixinRefMap.parentFile.mkdirs()
+        mixinRefMap.delete()
 
-    shadowCommon(project(":common", "transformProductionForge")) {
-        isTransitive = false
+        options.compilerArgs.removeAll { it.startsWith("-AoutRefMapFile=") || it == "-ApluginVersion=0.7" }
+        options.compilerArgs.addAll(
+            listOf(
+                "-AoutRefMapFile=${mixinRefMap.canonicalPath}",
+                "-ApluginVersion=0.7"
+            )
+        )
     }
 }
 
-tasks {
-    processResources {
-        inputs.property("group", rootProject.property("maven_group"))
-        inputs.property("version", project.version)
+tasks.named<org.gradle.language.jvm.tasks.ProcessResources>("processResources") {
+    val sharedIcon = file("../assets/logo.png")
+    val properties = mapOf(
+        "version" to project.version,
+        "mod_id" to rootProject.property("mod_id"),
+        "minecraft_version" to rootProject.property("minecraft_version"),
+        "loader_version" to forgeVersion.substringAfter('-').substringBefore('.'),
+        "forge_version" to forgeVersion.substringAfter('-'),
+        "shared_icon" to sharedIcon.path
+    )
 
-        filesMatching("META-INF/mods.toml") {
-            expand(mapOf(
-                "group" to rootProject.property("maven_group"),
-                "version" to project.version,
+    inputs.properties(properties)
 
-                "mod_id" to rootProject.property("mod_id"),
-                "minecraft_version" to rootProject.property("minecraft_version")
-            ))
-        }
-
-        exclude("architectury.common.json")
+    from(sharedIcon) {
+        into("")
+        rename { "icon.png" }
     }
 
-    remapJar {
-        injectAccessWidener.set(true)
+    filesMatching("META-INF/mods.toml") {
+        expand(properties)
     }
+}
 
-    jar {
-        from("../LICENSE.md")
-        from("../assets/logo.png") {
-            rename { "icon.png" }
-        }
+tasks.named<org.gradle.jvm.tasks.Jar>("jar") {
+    from("../LICENSE.md")
+    from(mixinRefMap)
 
-        rename("common-common-refmap.json", "weatherchanger-common-common-refmap.json")
-
-        dependsOn(":common:transformProductionForge")
-
-        from({
-            shadowCommon.filter { it.name.endsWith("jar") }.map { zipTree(it) }
-        })
+    manifest {
+        attributes(
+            mapOf(
+                "Implementation-Version" to project.version,
+                "MixinConfigs" to mixinConfig
+            )
+        )
     }
 }
 
 java {
     withSourcesJar()
+    toolchain.languageVersion.set(org.gradle.jvm.toolchain.JavaLanguageVersion.of(rootProject.property("java_version").toString().toInt()))
 }
 
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
+        create<org.gradle.api.publish.maven.MavenPublication>("mavenJava") {
+            artifact(tasks.named("jar"))
         }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
     }
 }

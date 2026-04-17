@@ -3,30 +3,22 @@ package me.lucaslah.weatherchanger.keys;
 import me.lucaslah.weatherchanger.WeatherChanger;
 import me.lucaslah.weatherchanger.config.WcMode;
 import me.lucaslah.weatherchanger.keybinding.Key;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
 public class ToggleClearKey extends Key {
     @Override
-    public void onPress(@NotNull MinecraftClient client) {
+    public void onPress(@NotNull Minecraft client) {
         WeatherChanger.setMode(WcMode.CLEAR);
-        assert mc.player != null;
-        mc.player.sendMessage(Text.translatable("commands.weatherchanger.set.clear"), true);
+        WeatherChanger.sendOverlayMessage(Component.translatable("commands.weatherchanger.set.clear"));
     }
 
     @Override
-    public Identifier getId() {
-        return Identifier.of("weatherchanger", "toggleclearkey");
-    }
-
-    @Override
-    public KeyBinding getKeyBinding() {
-        return this.keybind;
+    public String getId() {
+        return "weatherchanger:toggleclearkey";
     }
 
     @Override
@@ -36,12 +28,12 @@ public class ToggleClearKey extends Key {
 
     @Override
     public String getDisplayName() {
-        return I18n.translate("keys.weatherchanger.clear.name");
+        return "keys.weatherchanger.clear.name";
     }
 
     @Override
-    public InputUtil.Type getKeyType() {
-        return InputUtil.Type.KEYSYM;
+    public InputConstants.Type getKeyType() {
+        return InputConstants.Type.KEYSYM;
     }
 
     @Override

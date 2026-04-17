@@ -12,8 +12,8 @@ import me.lucaslah.weatherchanger.keys.ToggleOffKey;
 import me.lucaslah.weatherchanger.keys.ToggleRainKey;
 import me.lucaslah.weatherchanger.keys.ToggleThunderKey;
 import me.lucaslah.weatherchanger.timerlogic.Timer;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -153,8 +153,18 @@ public class WeatherChanger {
         return commandManager;
     }
 
-    public static void sendClientMessage(Text message) {
-        MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(message);
+    public static void sendClientMessage(Component message) {
+        Minecraft client = Minecraft.getInstance();
+        if (client.player != null) {
+            client.player.sendSystemMessage(message);
+        }
+    }
+
+    public static void sendOverlayMessage(Component message) {
+        Minecraft client = Minecraft.getInstance();
+        if (client.player != null) {
+            client.player.sendOverlayMessage(message);
+        }
     }
 
     public static void toggleTimer() {

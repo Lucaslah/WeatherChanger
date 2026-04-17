@@ -6,8 +6,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import me.lucaslah.weatherchanger.WeatherChanger;
 import me.lucaslah.weatherchanger.command.Command;
 import me.lucaslah.weatherchanger.config.WcMode;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
+import net.minecraft.network.chat.Component;
 
 import static me.lucaslah.weatherchanger.WeatherChanger.sendClientMessage;
 
@@ -19,7 +18,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("off")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.OFF);
-                    sendClientMessage(Text.translatable("commands.weatherchanger.set.off"));
+                    sendClientMessage(Component.translatable("commands.weatherchanger.set.off"));
                     return 1;
                 })
         );
@@ -27,7 +26,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("clear")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.CLEAR);
-                    sendClientMessage(Text.translatable("commands.weatherchanger.set.clear"));
+                    sendClientMessage(Component.translatable("commands.weatherchanger.set.clear"));
                     return 1;
                 })
         );
@@ -35,7 +34,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("rain")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.RAIN);
-                    sendClientMessage(Text.translatable("commands.weatherchanger.set.rain"));
+                    sendClientMessage(Component.translatable("commands.weatherchanger.set.rain"));
                     return 1;
                 })
         );
@@ -43,7 +42,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("thunder")
                 .executes(context -> {
                     WeatherChanger.setMode(WcMode.THUNDER);
-                    sendClientMessage(Text.translatable("commands.weatherchanger.set.thunder"));
+                    sendClientMessage(Component.translatable("commands.weatherchanger.set.thunder"));
                     return 1;
                 })
         );
@@ -51,7 +50,7 @@ public class WeatherChangerCommand extends Command {
         command.then(LiteralArgumentBuilder.<T>literal("toggleTimer")
                 .executes(context -> {
                     WeatherChanger.toggleTimer();
-                    Text message = WeatherChanger.isTimerEnabled() ? Text.translatable("commands.weatherchanger.timer.on") : Text.translatable("commands.weatherchanger.timer.off");
+                    Component message = WeatherChanger.isTimerEnabled() ? Component.translatable("commands.weatherchanger.timer.on") : Component.translatable("commands.weatherchanger.timer.off");
                     sendClientMessage(message);
                     return 1;
                 })
@@ -62,8 +61,8 @@ public class WeatherChangerCommand extends Command {
     }
 
     @Override
-    public Identifier getId() {
-        return Identifier.of("weatherchanger", "corecommand");
+    public String getId() {
+        return "weatherchanger:corecommand";
     }
 
     @Override
