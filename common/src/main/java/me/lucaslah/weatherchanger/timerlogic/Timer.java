@@ -63,4 +63,8 @@ public class Timer {
             // No change, clear weather cannot improve or worsen in this context
         }
     }
+
+    public void shutdown() {
+        scheduler.shutdownNow();
+    }
 }

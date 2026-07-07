@@ -142,6 +142,10 @@ public class WeatherChanger {
      * Call on shutdown
      */
     public static void shutdown() {
+        if (weatherTimer != null) {
+            weatherTimer.shutdown();
+        }
+
         writeConfig();
     }
 
