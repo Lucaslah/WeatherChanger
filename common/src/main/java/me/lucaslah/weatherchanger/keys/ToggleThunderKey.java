@@ -33,11 +33,11 @@ public class ToggleThunderKey extends Key {
 
     @Override
     public InputConstants.Type getKeyType() {
-        return InputConstants.Type.KEYSYM;
+        return InputConstants.Type.KEYBOARD;
     }
 
     @Override
     public int getKey() {
-        return -1;
+        return InputConstants.UNKNOWN.getValue();
     }
 }

@@ -1,6 +1,6 @@
 plugins {
     java
-    id("net.minecraftforge.gradle") version "[7.0.17,8)"
+    id("net.minecraftforge.gradle")
 }
 
 val mixinConfig = "weatherchanger.mixins.json"
@@ -70,6 +70,8 @@ tasks.named<org.gradle.language.jvm.tasks.ProcessResources>("processResources") 
         "version" to project.version,
         "mod_id" to rootProject.property("mod_id"),
         "minecraft_version" to rootProject.property("minecraft_version"),
+        "minecraft_version_upper_bound" to rootProject.property("minecraft_version_upper_bound"),
+        "java_version" to rootProject.property("java_version"),
         "loader_version" to forgeVersion.substringAfter('-').substringBefore('.'),
         "forge_version" to forgeVersion.substringAfter('-'),
         "shared_icon" to sharedIcon.path
