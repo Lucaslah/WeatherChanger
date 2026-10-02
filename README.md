@@ -22,9 +22,6 @@ Changes the weather on client side (only visible to you) to clear, rain, or thun
 
 Supports forge and fabric, requires the [Fabric API](https://modrinth.com/mod/P7dR8mSH) when using fabric
 
-This checkout targets **Minecraft Java Edition 26.3**, with Java 25,
-Fabric Loader 0.19.5 / Fabric API 0.161.0+26.3, or Forge 66.0.9.
-
 ### In-Game Command Usage
 `/clientweather <off | clear | rain | thunder>`
 
@@ -50,23 +47,6 @@ You can download the mod from any of the platforms below.
 **GitHub Releases:** https://github.com/Lucaslah/WeatherChanger/releases <br>
 
 <!-- modrinth_exclude.end -->
-
-## Building for Minecraft 26.3
-
-Install JDK 25 and run `./gradlew build` (`.\gradlew.bat build` on Windows).
-The Gradle wrapper downloads Gradle 9.7.1. Fabric and Forge jars are generated
-in `fabric/build/libs` and `forge/build/libs`; jars ending in `-sources` are
-for development, not installation.
-
-The 26.3 port uses SDL-compatible `InputConstants.Type.KEYBOARD` and
-`InputConstants.UNKNOWN` for initially unbound keys. Weather overrides are
-restricted to client worlds where `Level.canHaveWeather()` allows weather.
-`off` leaves vanilla weather methods untouched; `rain` suppresses the visual
-thunder gradient even when the server has a thunderstorm. Gameplay weather
-checks continue to use the server's actual weather.
-
-Porting references: [Fabric 26.3 migration notes](https://fabricmc.net/2026/09/15/263.html)
-and [Forge 26.3 downloads](https://files.minecraftforge.net/net/minecraftforge/forge/index_26.3.html).
 
 ## Supported Versions
 
