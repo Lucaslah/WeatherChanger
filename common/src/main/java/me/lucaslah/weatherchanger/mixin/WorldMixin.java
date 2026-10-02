@@ -4,8 +4,6 @@ import me.lucaslah.weatherchanger.WeatherChanger;
 import me.lucaslah.weatherchanger.config.WcMode;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.DimensionType;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -25,7 +23,10 @@ public abstract class WorldMixin {
     protected float thunderLevel;
 
     @Shadow(remap = false)
-    public abstract DimensionType dimensionType();
+    public abstract boolean isClientSide();
+
+    @Shadow(remap = false)
+    public abstract boolean canHaveWeather();
 
     @Unique
     private float weatherChanger$getRainGradientOg(float delta) {
@@ -37,55 +38,48 @@ public abstract class WorldMixin {
         return Mth.lerp(delta, this.oThunderLevel, this.thunderLevel) * this.weatherChanger$getRainGradientOg(delta);
     }
 
-    @Unique
-    public DimensionType weatherChanger$getDimension() {
-        return this.dimensionType();
-    }
-
-    @Inject(method = "getRainLevel", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "getRainLevel(F)F", at = @At("HEAD"), cancellable = true, remap = false)
     public void getRainGradient(float delta, CallbackInfoReturnable<Float> callback) {
+        if (!this.isClientSide() || !this.canHaveWeather()) {
+            return;
+        }
+
         WcMode mode = WeatherChanger.getMode();
 
         if (mode == WcMode.CLEAR) {
             callback.setReturnValue(0F);
         } else if (mode == WcMode.RAIN || mode == WcMode.THUNDER) {
             callback.setReturnValue(1F);
-        } else {
-            callback.setReturnValue(Mth.lerp(delta, this.oRainLevel, this.rainLevel));
         }
-
-        callback.cancel();
     }
 
-    @Inject(method = "getThunderLevel", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "getThunderLevel(F)F", at = @At("HEAD"), cancellable = true, remap = false)
     public void getThunderGradient(float delta, CallbackInfoReturnable<Float> callback) {
+        if (!this.isClientSide() || !this.canHaveWeather()) {
+            return;
+        }
+
         WcMode mode = WeatherChanger.getMode();
 
-        if (mode == WcMode.CLEAR) {
+        if (mode == WcMode.CLEAR || mode == WcMode.RAIN) {
             callback.setReturnValue(0F);
         } else if (mode == WcMode.THUNDER) {
             callback.setReturnValue(1F);
-        } else {
-            callback.setReturnValue(Mth.lerp(delta, this.oThunderLevel, this.thunderLevel) * Mth.lerp(delta, this.oRainLevel, this.rainLevel));
         }
-
-        callback.cancel();
     }
 
-    @Inject(method = "isRaining", at = @At("HEAD"), cancellable = true, remap = false)
+    // Preserve the real weather for gameplay checks; only the visual gradients change.
+    @Inject(method = "isRaining()Z", at = @At("HEAD"), cancellable = true, remap = false)
     public void isRaining(CallbackInfoReturnable<Boolean> callback) {
-        callback.setReturnValue((double)this.weatherChanger$getRainGradientOg(1.0F) > 0.2);
-        callback.cancel();
+        if (this.isClientSide() && WeatherChanger.getMode() != WcMode.OFF) {
+            callback.setReturnValue(this.canHaveWeather() && (double)this.weatherChanger$getRainGradientOg(1.0F) > 0.2);
+        }
     }
 
-    @Inject(method = "isThundering", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "isThundering()Z", at = @At("HEAD"), cancellable = true, remap = false)
     public void isThundering(CallbackInfoReturnable<Boolean> callback) {
-        if (this.weatherChanger$getDimension().hasSkyLight() && !(this.weatherChanger$getDimension().hasCeiling())) {
-            callback.setReturnValue((double)this.weatherChanger$getThunderGradientOg(1.0F) > 0.9);
-        } else {
-            callback.setReturnValue(false);
+        if (this.isClientSide() && WeatherChanger.getMode() != WcMode.OFF) {
+            callback.setReturnValue(this.canHaveWeather() && (double)this.weatherChanger$getThunderGradientOg(1.0F) > 0.9);
         }
-
-        callback.cancel();
     }
 }

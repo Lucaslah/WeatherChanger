@@ -1,5 +1,5 @@
 plugins {
-    id("net.fabricmc.fabric-loom") version "1.15.5"
+    id("net.fabricmc.fabric-loom")
 }
 
 base {
@@ -29,7 +29,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("net.fabricmc:fabric-loader:${rootProject.property("fabric.loader_version")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${rootProject.property("fabric.version")}")
-    implementation("net.fabricmc.fabric-api:fabric-key-mapping-api-v1:2.0.4+e2bdee7847")
 }
 
 tasks {

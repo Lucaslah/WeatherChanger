@@ -1,6 +1,11 @@
 rootProject.name = "WeatherChanger"
 
 pluginManagement {
+    plugins {
+        id("net.fabricmc.fabric-loom") version providers.gradleProperty("fabric_loom_version").get()
+        id("net.minecraftforge.gradle") version providers.gradleProperty("forge_gradle_version").get()
+    }
+
     repositories {
         maven {
             name = "Fabric"
